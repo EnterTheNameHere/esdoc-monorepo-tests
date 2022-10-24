@@ -25,6 +25,7 @@ jobs:
       run: |
         echo "Dir list:"
         ls
+        echo "Changing directory to test/fixture"
         cd test/fixture
         echo "Dir list:"
         ls
@@ -42,7 +43,8 @@ jobs:
     - name: "Run test with local esdoc"
       run: |
         echo "executing..."
-        npm exec @enterthenamehere/esdoc
+        pwd
+        npm exec @enterthenamehere/esdoc -- -c esdoc.json
         echo "Dir list:"
         ls
         cat out/index.json
