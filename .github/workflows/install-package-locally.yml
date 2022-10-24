@@ -23,16 +23,26 @@ jobs:
 
     - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
       run: |
+        echo "Dir list:"
         ls
         cd test/fixture
+        echo "Dir list:"
         ls
+        echo "npm list:"
+        npm ls
+        echo "installing..."
         npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+        echo "npm list:"
+        npm ls
+        echo "Dir list:"
         ls
+        echo "Reading package.json"
+        cat package.json
 
     - name: "Run test with local esdoc"
       run: |
-        npm ls
-        ls
+        echo "executing..."
         npm exec @enterthenamehere/esdoc
+        echo "Dir list:"
         ls
         cat out/index.json
