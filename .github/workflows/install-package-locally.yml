@@ -18,14 +18,15 @@ jobs:
       with:
         node-version: ${{ matrix.version }}
       
-    - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
-      run: |
-        npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
-    
     - name: "Checkout repository with tests"
       uses: actions/checkout@v2
 
+    - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
+      run: |
+        cd test/fixture
+        npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+
     - name: "Run test with local esdoc"
       run: |
-        npm exec --prefix test/fixture @enterthenamehere/esdoc
-        cat test/fixture/index.json
+        npm exec @enterthenamehere/esdoc
+        cat out/index.json
