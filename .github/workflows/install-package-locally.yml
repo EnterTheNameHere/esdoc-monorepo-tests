@@ -1,0 +1,31 @@
+name: Test installing @enterthenamehere/esdoc package locally
+on:
+  workflow_dispatch:
+
+jobs:
+  test-installation:
+    strategy:
+      max-parallel: 2
+      fail-fast: true
+      matrix:
+        node-version: [14, 16, latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: "Using Node.js ${{ matrix.node-version }} on ${{ matrix.os }}"
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.version }}
+      
+    - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
+      run: |
+        npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+    
+    - name: "Checkout repository with tests"
+      uses: actions/checkout@v2
+
+    - name: "Run test with local esdoc"
+      run: |
+        npm exec --prefix test/fixture esdoc
+        cat test/fixture/index.json

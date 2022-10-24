@@ -1,0 +1,33 @@
+name: Test installing @enterthenamehere/esdoc package globally
+on:
+  workflow_dispatch:
+
+jobs:
+  test-installation:
+    strategy:
+      max-parallel: 2
+      fail-fast: true
+      matrix:
+        node-version: [14, 16, latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: "Using Node.js ${{ matrix.node-version }} on ${{ matrix.os }}"
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.version }}
+      
+    - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin globally"
+      run: |
+        npm install -g @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+    
+    - name: "Checkout repository with tests"
+      uses: actions/checkout@v2
+
+    - name: "Run test with global esdoc"
+      run: |
+        cd test/fixture
+        esdoc
+        cd out
+        cat index.json

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "esdoc-global-installation-test-fixture",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnterTheNameHere/esdoc-monorepo"
+  },
+  "main": "./src/ESDocTest.js"
+}

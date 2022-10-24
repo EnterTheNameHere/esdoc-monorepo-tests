@@ -1,0 +1,6 @@
+{
+  "source": "./src",
+  "destination": "./out",
+  "index": "./README.md",
+  "package": "./package.json"
+}
