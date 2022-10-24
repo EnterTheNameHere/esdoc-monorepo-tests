@@ -27,5 +27,5 @@ jobs:
 
     - name: "Run test with local esdoc"
       run: |
-        npm exec --prefix test/fixture esdoc
+        npm exec --prefix test/fixture @enterthenamehere/esdoc
         cat test/fixture/index.json
