@@ -6,7 +6,6 @@ jobs:
   test-installation:
     strategy:
       max-parallel: 2
-      fail-fast: true
       matrix:
         node-version: [14, 16, latest]
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -24,23 +23,11 @@ jobs:
     - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
       working-directory: ./test/fixture
       run: |
-        echo "Dir list:"
-        ls
-        echo "npm list:"
-        npm ls
-        echo "installing..."
         npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
-        echo "npm list:"
-        npm ls
-        echo "Reading package.json"
-        cat package.json
 
     - name: "Run test with local esdoc"
       working-directory: ./test/fixture
       run: |
-        echo "executing..."
-        pwd
-        npm exec @enterthenamehere/esdoc
-        echo "Dir list:"
-        ls
+        npm exec @enterthenamehere/esdoc --debug --verbose
+        echo "printing out/index.json"
         cat out/index.json

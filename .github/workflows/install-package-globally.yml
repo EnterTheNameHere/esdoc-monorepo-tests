@@ -26,8 +26,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: "Run test with global esdoc"
+      working-directory: ./test/fixture
       run: |
-        cd test/fixture
-        esdoc
-        cd out
-        cat index.json
+        esdoc --debug --verbose
+        echo "printing out/index.json"
+        cat out/index.json
