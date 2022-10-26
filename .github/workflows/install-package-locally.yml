@@ -36,6 +36,7 @@ jobs:
         cat package.json
 
     - name: "Run test with local esdoc"
+      working-directory: ./test/fixture
       run: |
         echo "executing..."
         pwd
