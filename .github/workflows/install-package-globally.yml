@@ -6,7 +6,7 @@ jobs:
   test-installation:
     strategy:
       max-parallel: 2
-      fail-fast: true
+      fail-fast: false
       matrix:
         node-version: [14, 16, latest]
         os: [ubuntu-latest, macos-latest, windows-latest]
