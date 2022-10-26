@@ -22,11 +22,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
+      working-directory: ./test/fixture
       run: |
-        echo "Dir list:"
-        ls
-        echo "Changing directory to test/fixture"
-        cd test/fixture
         echo "Dir list:"
         ls
         echo "npm list:"
@@ -35,8 +32,6 @@ jobs:
         npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
         echo "npm list:"
         npm ls
-        echo "Dir list:"
-        ls
         echo "Reading package.json"
         cat package.json
 
@@ -44,7 +39,7 @@ jobs:
       run: |
         echo "executing..."
         pwd
-        npm exec @enterthenamehere/esdoc -- -c esdoc.json
+        npm exec @enterthenamehere/esdoc
         echo "Dir list:"
         ls
         cat out/index.json
