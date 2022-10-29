@@ -18,5 +18,5 @@ jobs:
       run: npm config get prefix
     
     - name: "list directories"
-      run: ls /opt/hostedtoolcache/node/14.20.1/x64 -R
+      run: ls /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules/@enterthenamehere -R
 
