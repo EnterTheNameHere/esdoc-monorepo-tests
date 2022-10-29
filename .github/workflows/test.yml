@@ -12,7 +12,7 @@ jobs:
         node-version: 14
       
     - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin globally"
-      run: npm install -g @enterthenamehere/esdoc@2.2.4 @enterthenamehere/esdoc-standard-plugin@2.2.4
+      run: npm install -g @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
     
     - name: "Get npm global path"
       run: npm config get prefix
