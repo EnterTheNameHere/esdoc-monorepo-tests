@@ -20,3 +20,12 @@ jobs:
     - name: "list directories"
       run: ls /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules/@enterthenamehere -R
 
+    - name: "Checkout repository with tests"
+      uses: actions/checkout@v2
+
+    - name: "Run test with global esdoc"
+      working-directory: ./test/fixture
+      run: |
+        esdoc --debug --verbose
+        echo "printing out/index.json"
+        cat out/index.json
