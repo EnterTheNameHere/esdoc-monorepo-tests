@@ -8,12 +8,13 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        node-version: [14, 16, latest]
+        node-version: [latest]
         os: [ubuntu-latest, macos-latest, windows-latest]
+        package-manager: [npm]
     
     runs-on: ${{ matrix.os }}
     steps:
-    - name: "Using Node.js ${{ matrix.node-version }} on ${{ matrix.os }}"
+    - name: "Use ${{ matrix.node-version }} Node.js on ${{ matrix.os }}"
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.version }}
@@ -26,9 +27,14 @@ jobs:
       run: |
         npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
 
-    - name: "Run test with local esdoc"
+    - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
       run: |
         npm exec @enterthenamehere/esdoc --debug --verbose
         echo "printing out/index.json"
         cat out/index.json
+    
+    - name: "Run test"
+      run: |
+        npm ci
+        npm run test1
