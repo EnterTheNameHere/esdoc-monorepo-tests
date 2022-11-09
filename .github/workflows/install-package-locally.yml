@@ -22,10 +22,10 @@ jobs:
     - name: "Checkout repository with tests"
       uses: actions/checkout@v2
 
-    - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
+    - name: "Install dev @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
       working-directory: ./test/fixture
       run: |
-        npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+        npm install @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev
         npm list
 
     - name: "Generate documentation with local esdoc"
