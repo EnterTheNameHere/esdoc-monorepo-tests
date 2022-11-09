@@ -37,5 +37,5 @@ jobs:
     
     - name: "Run test"
       run: |
-        npm ci
+        npm install
         npm run test1
