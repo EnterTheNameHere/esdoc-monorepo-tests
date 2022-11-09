@@ -8,8 +8,8 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        node-version: [latest]
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [14, 16, latest]
+        os: [ubuntu-latest]
         package-manager: [npm]
     
     runs-on: ${{ matrix.os }}
@@ -26,6 +26,7 @@ jobs:
       working-directory: ./test/fixture
       run: |
         npm install @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+        npm list
 
     - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
