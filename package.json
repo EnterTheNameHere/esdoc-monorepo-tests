@@ -2,9 +2,16 @@
   "private": true,
   "name": "@enterthenamehere/esdoc-test",
   "description": "Tests if ESDoc is installed correctly",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnterTheNameHere/esdoc-monorepo-tests"
+  },
   "scripts": {
+    "pretest1": "npm install",
     "test1": "mocha ./test/unit-tests/01.test.mjs",
+    "pretest2": "npm install",
     "test2": "mocha ./test/unit-tests/02.test.mjs",
+    "pretest3": "npm install",
     "test3": "mocha ./test/unit-tests/03.test.mjs"
   },
   "devDependencies": {

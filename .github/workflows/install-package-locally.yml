@@ -11,31 +11,30 @@ jobs:
         node-version: [14, 16, latest]
         os: [ubuntu-latest]
         package-manager: [npm]
+        test-number: [1, 2, 3]
     
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{matrix.os}}
     steps:
-    - name: "Use ${{ matrix.node-version }} Node.js on ${{ matrix.os }}"
+    - name: "Use ${{matrix.node-version}} Node.js on ${{matrix.os}}"
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.version }}
+        node-version: ${{matrix.version}}
       
     - name: "Checkout repository with tests"
       uses: actions/checkout@v2
-
-    - name: "Install dev @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin locally"
+    
+    - name: "Run installation script with ${{matrix.package-manager}}"
       working-directory: ./test/fixture
       run: |
-        npm install @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev
-        npm list
+        ${{matrix.package-manager}} run test${{matrix.test-number}}${{matrix.package-manager}}
 
     - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
       run: |
-        npm exec @enterthenamehere/esdoc --debug --verbose
+        ${{matrix.package-manager}} exec @enterthenamehere/esdoc --debug --verbose
         echo "printing out/index.json"
         cat out/index.json
     
-    - name: "Run test"
+    - name: "Run unit-test"
       run: |
-        npm install
-        npm run test2
+        ${{matrix.package-manager}} run test${{matrix.test-number}}

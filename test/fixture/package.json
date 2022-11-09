@@ -5,7 +5,15 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EnterTheNameHere/esdoc-monorepo"
+    "url": "https://github.com/EnterTheNameHere/esdoc-monorepo-tests"
+  },
+  "scripts": {
+    "test1npm": "npm install @enterthenamehere/esdoc@dev",
+    "posttest1npm": "npm list",
+    "test2npm": "npm install @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "posttest2npm": "npm list",
+    "test3npm": "npm install @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-accessor-plugin@dev @enterthenamehere/esdoc-brand-plugin@dev @enterthenamehere/esdoc-coverage-plugin@dev @enterthenamehere/esdoc-ecmascript-proposal-plugin@dev @enterthenamehere/esdoc-exclude-source-plugin@dev @enterthenamehere/esdoc-external-ecmascript-plugin@dev @enterthenamehere/esdoc-external-nodejs-plugin@dev @enterthenamehere/esdoc-external-webapi-plugin@dev @enterthenamehere/esdoc-flow-type-plugin@dev @enterthenamehere/esdoc-importpath-plugin@dev @enterthenamehere/esdoc-inject-gtm-plugin@dev @enterthenamehere/esdoc-inject-script-plugin@dev @enterthenamehere/esdoc-inject-style-plugin@dev @enterthenamehere/esdoc-integrate-manual-plugin@dev @enterthenamehere/esdoc-integrate-test-plugin@dev @enterthenamehere/esdoc-jsx-plugin@dev @enterthenamehere/esdoc-lint-plugin@dev @enterthenamehere/esdoc-publish-html-plugin@dev @enterthenamehere/esdoc-publish-markdown-plugin@dev @enterthenamehere/esdoc-react-plugin@dev @enterthenamehere/esdoc-type-inference-plugin@dev @enterthenamehere/esdoc-typescript-plugin@dev @enterthenamehere/esdoc-undocumented-identifier-plugin@dev @enterthenamehere/esdoc-unexported-identifier-plugin@dev @enterthenamehere/color-logger@dev @enterthenamehere/ice-cap@dev",
+    "posttest3npm": "npm list"
   },
   "main": "./src/ESDocTest.js"
 }
