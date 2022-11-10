@@ -8,22 +8,24 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        node-version: [14, 16, latest]
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [14]
+        os: [ubuntu-latest]
+        package-manager: [npm]
+        test-number: [1]
     
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{matrix.os}}
     steps:
-    - name: "Using Node.js ${{ matrix.node-version }} on ${{ matrix.os }}"
+    - name: "Use ${{matrix.node-version}} Node.js on ${{matrix.os}}"
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.version }}
-      
-    - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin globally"
-      run: |
-        npm install -g @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+        node-version: ${{matrix.version}}
     
     - name: "Checkout repository with tests"
       uses: actions/checkout@v2
+
+    - name: "Install @enterthenamehere/esdoc globally for test ${{matrix.test-number}}"
+      run: |
+        ${{matrix.package-manager}} run prepare-global-test${{matrix.test-number}}-${{matrix.package-manager}}
 
     - name: "Run test with global esdoc"
       working-directory: ./test/fixture
@@ -31,3 +33,7 @@ jobs:
         esdoc --debug --verbose
         echo "printing out/index.json"
         cat out/index.json
+    
+    - name: "Run unit test ${{matrix.test-number}}"
+      run: |
+        ${{matrix.package-manager}} run test${{matrix.test-number}}

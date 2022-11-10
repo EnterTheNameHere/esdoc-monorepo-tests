@@ -23,7 +23,7 @@ jobs:
     - name: "Checkout repository with tests"
       uses: actions/checkout@v2
     
-    - name: "Run installation script with ${{matrix.package-manager}}"
+    - name: "Run installation script for test ${{matrix.test-number}} with ${{matrix.package-manager}}"
       working-directory: ./test/fixture
       run: |
         ${{matrix.package-manager}} run test${{matrix.test-number}}${{matrix.package-manager}}
@@ -35,6 +35,6 @@ jobs:
         echo "printing out/index.json"
         cat out/index.json
     
-    - name: "Run unit-test"
+    - name: "Run unit test ${{matrix.test-number}}"
       run: |
         ${{matrix.package-manager}} run test${{matrix.test-number}}
