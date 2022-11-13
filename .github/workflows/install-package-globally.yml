@@ -8,24 +8,21 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        node-version: [14, 16, latest]
         os: [ubuntu-latest, macos_latest, windows_latest]
-        package-manager: [npm]
-        package-number: [1, 2, 3]
     
     runs-on: ${{matrix.os}}
     steps:
-    - name: "Use ${{matrix.node-version}} Node.js on ${{matrix.os}}"
+    - name: "Use 16 Node.js on ${{matrix.os}}"
       uses: actions/setup-node@v3
       with:
-        node-version: ${{matrix.version}}
+        node-version: 16
 
     - name: "Checkout repository with tests"
       uses: actions/checkout@v3
-
-    - name: "Install @enterthenamehere/esdoc package group ${{matrix.package-number}} globally"
+    
+    - name: "Install @enterthenamehere/esdoc package group 1 globally"
       run: |
-        ${{matrix.package-manager}} run prepare-global-test${{matrix.package-number}}-${{matrix.package-manager}}
+        npm run prepare-global-test1-npm
     
     - name: "Run test with global esdoc"
       working-directory: ./test/fixture
@@ -36,4 +33,48 @@ jobs:
     
     - name: "Run unit-test"
       run: |
-        ${{matrix.package-manager}} run global-test-${{matrix.package-manager}}
+        npm run global-test-npm
+    
+    - name: Remove generated documentation
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./test/fixture/out
+    
+
+
+    - name: "Install @enterthenamehere/esdoc package group 2 globally"
+      run: |
+        npm run prepare-global-test2-npm
+    
+    - name: "Run test with global esdoc"
+      working-directory: ./test/fixture
+      run: |
+        esdoc --debug --verbose
+        echo "printing out/index.json"
+        cat out/index.json
+    
+    - name: "Run unit-test"
+      run: |
+        npm run global-test-npm
+    
+    - name: Remove generated documentation
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./test/fixture/out
+    
+
+
+    - name: "Install @enterthenamehere/esdoc package group 3 globally"
+      run: |
+        npm run prepare-global-test1-npm
+    
+    - name: "Run test with global esdoc"
+      working-directory: ./test/fixture
+      run: |
+        esdoc --debug --verbose
+        echo "printing out/index.json"
+        cat out/index.json
+    
+    - name: "Run unit-test"
+      run: |
+        npm run global-test-npm
