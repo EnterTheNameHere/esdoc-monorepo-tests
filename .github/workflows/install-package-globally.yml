@@ -11,7 +11,7 @@ jobs:
         node-version: [14]
         os: [ubuntu-latest]
         package-manager: [npm]
-        test-number: [1]
+        package-number: [1, 2, 3]
     
     runs-on: ${{matrix.os}}
     steps:
@@ -20,12 +20,12 @@ jobs:
       with:
         node-version: ${{matrix.version}}
     
+    - name: "Install @enterthenamehere/esdoc package group ${{matrix.package-number}} globally"
+      run: |
+        ${{matrix.package-manager}} run prepare-global-test${{matrix.package-number}}-${{matrix.package-manager}}
+    
     - name: "Checkout repository with tests"
       uses: actions/checkout@v2
-
-    - name: "Install @enterthenamehere/esdoc globally for test ${{matrix.test-number}}"
-      run: |
-        ${{matrix.package-manager}} run prepare-global-test${{matrix.test-number}}-${{matrix.package-manager}}
 
     - name: "Run test with global esdoc"
       working-directory: ./test/fixture
@@ -34,6 +34,6 @@ jobs:
         echo "printing out/index.json"
         cat out/index.json
     
-    - name: "Run unit test ${{matrix.test-number}}"
+    - name: "Run unit-test"
       run: |
-        ${{matrix.package-manager}} run test${{matrix.test-number}}
+        ${{matrix.package-manager}} run global-test-${{matrix.package-manager}}

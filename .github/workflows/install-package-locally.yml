@@ -26,7 +26,7 @@ jobs:
     - name: "Run installation script for test ${{matrix.test-number}} with ${{matrix.package-manager}}"
       working-directory: ./test/fixture
       run: |
-        ${{matrix.package-manager}} run test${{matrix.test-number}}${{matrix.package-manager}}
+        ${{matrix.package-manager}} run local-test${{matrix.test-number}}${{matrix.package-manager}}
 
     - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
@@ -37,4 +37,4 @@ jobs:
     
     - name: "Run unit test ${{matrix.test-number}}"
       run: |
-        ${{matrix.package-manager}} run test${{matrix.test-number}}
+        ${{matrix.package-manager}} run local-test${{matrix.test-number}}
