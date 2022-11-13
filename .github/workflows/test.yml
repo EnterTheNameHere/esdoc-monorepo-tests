@@ -12,20 +12,10 @@ jobs:
         node-version: 14
       
     - name: "Install latest @enterthenamehere/esdoc and @enterthenamehere/esdoc-standard-plugin globally"
-      run: npm install -g @enterthenamehere/esdoc @enterthenamehere/esdoc-standard-plugin
+      run: npm install -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev
     
     - name: "Get npm global path"
       run: npm config get prefix
     
-    - name: "list directories"
-      run: ls /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules/@enterthenamehere -R
-
-    - name: "Checkout repository with tests"
-      uses: actions/checkout@v2
-
-    - name: "Run test with global esdoc"
-      working-directory: ./test/fixture
-      run: |
-        esdoc --debug --verbose
-        echo "printing out/index.json"
-        cat out/index.json
+    - name: "list packages"
+      run: npm list --global --depth=3
