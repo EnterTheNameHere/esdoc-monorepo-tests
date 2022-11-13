@@ -1,4 +1,4 @@
-name: Test
+name: Test local installation
 on:
   workflow_dispatch:
 
@@ -8,7 +8,7 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
     
     runs-on: ${{matrix.os}}
     steps:
@@ -76,62 +76,4 @@ jobs:
       uses: JesseTG/rm@v1.0.0
       with:
         path: ./test/fixture/out
-
-
-    - name: "Use latest Node.js on ${{matrix.os}}"
-      uses: actions/setup-node@v3
-      with:
-        node-version: latest
-    
-    - name: "Run installation script for test 1 with npm"
-      working-directory: ./test/fixture
-      run: |
-        npm run local-test1npm
-    
-    - name: "Generate documentation with local esdoc"
-      working-directory: ./test/fixture
-      run: |
-        npm exec @enterthenamehere/esdoc --debug --verbose
-    
-    - name: "Run unit test 1"
-      run: |
-        npm run local-test1
-    
-    - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.0
-      with:
-        path: ./test/fixture/out
-    
-    - name: "Run installation script for test 2 with npm"
-      working-directory: ./test/fixture
-      run: |
-        npm run local-test2npm
-
-    - name: "Generate documentation with local esdoc"
-      working-directory: ./test/fixture
-      run: |
-        npm exec @enterthenamehere/esdoc --debug --verbose
-    
-    - name: "Run unit test 2"
-      run: |
-        npm run local-test2
-    
-    - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.0
-      with:
-        path: ./test/fixture/out
-    
-    - name: "Run installation script for test 3 with npm"
-      working-directory: ./test/fixture
-      run: |
-        npm run local-test3npm
-
-    - name: "Generate documentation with local esdoc"
-      working-directory: ./test/fixture
-      run: |
-        npm exec @enterthenamehere/esdoc --debug --verbose
-    
-    - name: "Run unit test 3"
-      run: |
-        npm run local-test3
     
