@@ -8,8 +8,8 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        node-version: [14, 16, latest]
-        os: [ubuntu-latest, macos_latest, windows_latest]
+        node-version: [14]
+        os: [ubuntu-latest]
         package-manager: [npm]
     
     runs-on: ${{matrix.os}}
@@ -37,10 +37,9 @@ jobs:
         ${{matrix.package-manager}} run local-test1
     
     - name: Remove generated documentation
-      working-directory: ./test/fixture
       uses: JesseTG/rm@v1.0.0
       with:
-        path: ./out
+        path: ./test/fixture/out
     
     - name: "./out directory should not exist"
       working-directory: ./test/fixture
@@ -62,10 +61,9 @@ jobs:
         ${{matrix.package-manager}} run local-test2
     
     - name: Remove generated documentation
-      working-directory: ./test/fixture
       uses: JesseTG/rm@v1.0.0
       with:
-        path: ./out
+        path: ./test/fixture/out
     
     - name: "./out directory should not exist"
       working-directory: ./test/fixture
