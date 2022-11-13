@@ -12,10 +12,10 @@ jobs:
     
     runs-on: ${{matrix.os}}
     steps:
-    - name: "Use 16 Node.js on ${{matrix.os}}"
+    - name: "Use 14 Node.js on ${{matrix.os}}"
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: 14
     
     - name: "Checkout repository with tests"
       uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
     - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
       run: |
-        npm exec @enterthenamehere/esdoc
+        npm exec esdoc
     
     - name: "Run unit test 1"
       run: |
