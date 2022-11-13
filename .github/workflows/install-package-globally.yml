@@ -1,4 +1,4 @@
-name: Test installing @enterthenamehere/esdoc package globally
+name: Test global installation
 on:
   workflow_dispatch:
 
