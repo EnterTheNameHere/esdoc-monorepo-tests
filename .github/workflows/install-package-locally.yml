@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [14, 16, latest]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos_latest, windows_latest]
         package-manager: [npm]
         test-number: [1, 2, 3]
     
