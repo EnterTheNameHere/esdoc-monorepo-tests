@@ -20,12 +20,103 @@ jobs:
     - name: "list packages"
       run: npm list --global --depth=1
       
-    - name: "Checkout repository with tests"
-      uses: actions/checkout@v2
+name: Test installing @enterthenamehere/esdoc package locally
+on:
+  workflow_dispatch:
 
-    - name: "Run test with global esdoc"
+jobs:
+  test-installation:
+    strategy:
+      max-parallel: 2
+      fail-fast: false
+      matrix:
+        node-version: [14, 16, latest]
+        os: [ubuntu-latest, macos_latest, windows_latest]
+        package-manager: [npm]
+    
+    runs-on: ${{matrix.os}}
+    steps:
+    - name: "Use ${{matrix.node-version}} Node.js on ${{matrix.os}}"
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{matrix.version}}
+      
+    - name: "Checkout repository with tests"
+      uses: actions/checkout@v3
+    
+    - name: "Run installation script for test 1 with ${{matrix.package-manager}}"
       working-directory: ./test/fixture
       run: |
-        esdoc --debug --verbose
-        echo "printing out/index.json"
-        cat out/index.json
+        ${{matrix.package-manager}} run local-test1${{matrix.package-manager}}
+
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        ${{matrix.package-manager}} exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 1"
+      run: |
+        ${{matrix.package-manager}} run local-test1
+    
+    - name: Remove generated documentation
+      working-directory: ./test/fixture
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./out
+    
+    - name: "./out directory should not exist"
+      working-directory: ./test/fixture
+      run: |
+        ls
+
+    - name: "Run installation script for test 2 with ${{matrix.package-manager}}"
+      working-directory: ./test/fixture
+      run: |
+        ${{matrix.package-manager}} run local-test2${{matrix.package-manager}}
+
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        ${{matrix.package-manager}} exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 2"
+      run: |
+        ${{matrix.package-manager}} run local-test2
+    
+    - name: Remove generated documentation
+      working-directory: ./test/fixture
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./out
+    
+    - name: "./out directory should not exist"
+      working-directory: ./test/fixture
+      run: |
+        ls
+
+    - name: "Run installation script for test 3 with ${{matrix.package-manager}}"
+      working-directory: ./test/fixture
+      run: |
+        ${{matrix.package-manager}} run local-test3${{matrix.package-manager}}
+
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        ${{matrix.package-manager}} exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 3"
+      run: |
+        ${{matrix.package-manager}} run local-test3
+    
+    - name: Remove generated documentation
+      working-directory: ./test/fixture
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./out
+    
+    - name: "./out directory should not exist"
+      working-directory: ./test/fixture
+      run: |
+        ls
+
+
