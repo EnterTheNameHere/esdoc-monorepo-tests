@@ -21,7 +21,7 @@ jobs:
         node-version: ${{matrix.version}}
 
     - name: "Checkout repository with tests"
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: "Install @enterthenamehere/esdoc package group ${{matrix.package-number}} globally"
       run: |
