@@ -19,13 +19,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{matrix.version}}
-    
+    - name: "Checkout repository with tests"
+      uses: actions/checkout@v2
+
     - name: "Install @enterthenamehere/esdoc package group ${{matrix.package-number}} globally"
       run: |
         ${{matrix.package-manager}} run prepare-global-test${{matrix.package-number}}-${{matrix.package-manager}}
-    
-    - name: "Checkout repository with tests"
-      uses: actions/checkout@v2
 
     - name: "Run test with global esdoc"
       working-directory: ./test/fixture
