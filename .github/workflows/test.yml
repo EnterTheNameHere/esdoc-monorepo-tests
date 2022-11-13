@@ -8,90 +8,194 @@ jobs:
       max-parallel: 2
       fail-fast: false
       matrix:
-        node-version: [14]
         os: [ubuntu-latest]
-        package-manager: [npm]
     
     runs-on: ${{matrix.os}}
     steps:
-    - name: "Use ${{matrix.node-version}} Node.js on ${{matrix.os}}"
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{matrix.version}}
-      
     - name: "Checkout repository with tests"
       uses: actions/checkout@v3
+
+    - name: "Use 14 Node.js on ${{matrix.os}}"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
     
-    - name: "Run installation script for test 1 with ${{matrix.package-manager}}"
+    - name: "Run installation script for test 1 with npm"
       working-directory: ./test/fixture
       run: |
-        ${{matrix.package-manager}} run local-test1${{matrix.package-manager}}
-
+        npm run local-test1npm
+    
     - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
       run: |
-        ${{matrix.package-manager}} exec @enterthenamehere/esdoc --debug --verbose
+        npm exec @enterthenamehere/esdoc --debug --verbose
     
     - name: "Run unit test 1"
       run: |
-        ${{matrix.package-manager}} run local-test1
+        npm run local-test1
     
     - name: Remove generated documentation
       uses: JesseTG/rm@v1.0.0
       with:
         path: ./test/fixture/out
     
-    - name: "./out directory should not exist"
+    - name: "Run installation script for test 2 with npm"
       working-directory: ./test/fixture
       run: |
-        ls
-
-    - name: "Run installation script for test 2 with ${{matrix.package-manager}}"
-      working-directory: ./test/fixture
-      run: |
-        ${{matrix.package-manager}} run local-test2${{matrix.package-manager}}
+        npm run local-test2npm
 
     - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
       run: |
-        ${{matrix.package-manager}} exec @enterthenamehere/esdoc --debug --verbose
+        npm exec @enterthenamehere/esdoc --debug --verbose
     
     - name: "Run unit test 2"
       run: |
-        ${{matrix.package-manager}} run local-test2
+        npm run local-test2
     
     - name: Remove generated documentation
       uses: JesseTG/rm@v1.0.0
       with:
         path: ./test/fixture/out
     
-    - name: "./out directory should not exist"
+    - name: "Run installation script for test 3 with npm"
       working-directory: ./test/fixture
       run: |
-        ls
-
-    - name: "Run installation script for test 3 with ${{matrix.package-manager}}"
-      working-directory: ./test/fixture
-      run: |
-        ${{matrix.package-manager}} run local-test3${{matrix.package-manager}}
+        npm run local-test3npm
 
     - name: "Generate documentation with local esdoc"
       working-directory: ./test/fixture
       run: |
-        ${{matrix.package-manager}} exec @enterthenamehere/esdoc --debug --verbose
+        npm exec @enterthenamehere/esdoc --debug --verbose
     
     - name: "Run unit test 3"
       run: |
-        ${{matrix.package-manager}} run local-test3
+        npm run local-test3
+    
+    - name: Remove generated documentation
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./test/fixture/out
+
+
+    - name: "Use 16 Node.js on ${{matrix.os}}"
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    
+    - name: "Run installation script for test 1 with npm"
+      working-directory: ./test/fixture
+      run: |
+        npm run local-test1npm
+    
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        npm exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 1"
+      run: |
+        npm run local-test1
     
     - name: Remove generated documentation
       uses: JesseTG/rm@v1.0.0
       with:
         path: ./test/fixture/out
     
-    - name: "./out directory should not exist"
+    - name: "Run installation script for test 2 with npm"
       working-directory: ./test/fixture
       run: |
-        ls
+        npm run local-test2npm
+
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        npm exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 2"
+      run: |
+        npm run local-test2
+    
+    - name: Remove generated documentation
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./test/fixture/out
+    
+    - name: "Run installation script for test 3 with npm"
+      working-directory: ./test/fixture
+      run: |
+        npm run local-test3npm
+
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        npm exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 3"
+      run: |
+        npm run local-test3
+    
+    - name: Remove generated documentation
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./test/fixture/out
 
 
+    - name: "Use latest Node.js on ${{matrix.os}}"
+      uses: actions/setup-node@v3
+      with:
+        node-version: latest
+    
+    - name: "Run installation script for test 1 with npm"
+      working-directory: ./test/fixture
+      run: |
+        npm run local-test1npm
+    
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        npm exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 1"
+      run: |
+        npm run local-test1
+    
+    - name: Remove generated documentation
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./test/fixture/out
+    
+    - name: "Run installation script for test 2 with npm"
+      working-directory: ./test/fixture
+      run: |
+        npm run local-test2npm
+
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        npm exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 2"
+      run: |
+        npm run local-test2
+    
+    - name: Remove generated documentation
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: ./test/fixture/out
+    
+    - name: "Run installation script for test 3 with npm"
+      working-directory: ./test/fixture
+      run: |
+        npm run local-test3npm
+
+    - name: "Generate documentation with local esdoc"
+      working-directory: ./test/fixture
+      run: |
+        npm exec @enterthenamehere/esdoc --debug --verbose
+    
+    - name: "Run unit test 3"
+      run: |
+        npm run local-test3
+    
+    - name: Finished
