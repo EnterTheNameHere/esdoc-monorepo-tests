@@ -12,10 +12,10 @@ jobs:
     
     runs-on: ${{matrix.os}}
     steps:
-    - name: "Use 14 Node.js on ${{matrix.os}}"
+    - name: "Use 16 Node.js on ${{matrix.os}}"
       uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: 16
     
     - name: "Checkout repository with tests"
       uses: actions/checkout@v3
