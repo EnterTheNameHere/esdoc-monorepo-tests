@@ -197,5 +197,3 @@ jobs:
     - name: "Run unit test 3"
       run: |
         npm run local-test3
-    
-    - name: Finished
