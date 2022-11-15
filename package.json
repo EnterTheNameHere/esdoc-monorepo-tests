@@ -17,7 +17,7 @@
     "global-test-npm": "mocha ./test/unit-tests/ESDocIndexJSONContainsData.mjs",
     "prepare-global-test1-npm": "npm install -g @enterthenamehere/esdoc@dev && npm list -g --json",
     "postprepare-global-test1-npm": "npm install && npm list --json",
-    "preprepare-global-test2-npm": "npm remove -g @enterthenamehere/esdoc@dev && npm list g- --json",
+    "preprepare-global-test2-npm": "npm remove -g @enterthenamehere/esdoc@dev && npm list -g --json",
     "prepare-global-test2-npm": "npm install -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev && npm list -g --json",
     "postprepare-global-test2-npm": "npm install && npm list --json",
     "preprepare-global-test3-npm": "npm remove -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev && npm list -g --json",
