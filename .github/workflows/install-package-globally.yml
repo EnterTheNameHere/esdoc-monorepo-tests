@@ -36,7 +36,7 @@ jobs:
         npm run global-test-npm
     
     - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.0
+      uses: JesseTG/rm@v1.0.3
       with:
         path: ./test/fixture/out
     
@@ -58,7 +58,7 @@ jobs:
         npm run global-test-npm
     
     - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.0
+      uses: JesseTG/rm@v1.0.3
       with:
         path: ./test/fixture/out
     
