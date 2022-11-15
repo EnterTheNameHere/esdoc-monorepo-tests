@@ -35,7 +35,7 @@ jobs:
         npm run local-test1
     
     - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.0
+      uses: JesseTG/rm@v1.0.3
       with:
         path: ./test/fixture/out
     
@@ -54,7 +54,7 @@ jobs:
         npm run local-test2
     
     - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.0
+      uses: JesseTG/rm@v1.0.3
       with:
         path: ./test/fixture/out
     
@@ -73,7 +73,7 @@ jobs:
         npm run local-test3
     
     - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.0
+      uses: JesseTG/rm@v1.0.3
       with:
         path: ./test/fixture/out
     
