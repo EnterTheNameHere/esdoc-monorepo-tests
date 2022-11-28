@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "@enterthenamehere/esdoc-local-installation-test-2-fixture",
+  "description": "Contains minimal source code and settings to generate documentation with ESDoc.",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnterTheNameHere/esdoc-monorepo-tests"
+  },
+  "scripts": {
+    "local-list-packages-yarn": "yarn list --depth=3 --json --long",
+    "local-list-packages-npm": "npm list --depth=3 --json --long",
+    "local-list-packages-pnpm": "pnpm list --depth=3 --json --long",
+    "local-test-2-install-packages-yarn": "yarn add @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "local-test-2-install-packages-npm": "npm install @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "local-test-2-install-packages-pnpm": "pnpm add @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "local-test-2-generate-docs": "esdoc"
+  },
+  "main": "./src/ESDocTest.js",
+  "devDependencies": {
+    "@enterthenamehere/esdoc": "^2.5.3-dev.2",
+    "@enterthenamehere/esdoc-standard-plugin": "^2.5.3-dev.1"
+  }
+}

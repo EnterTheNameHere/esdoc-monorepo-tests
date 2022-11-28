@@ -1,22 +1,4 @@
-const upath = require('upath');
-const fse = require('fs-extra');
-
 exports.scope = _getPackageScope('../../package.json');
-exports.joinDir = helperJoinDir;
-exports.dirExists = helperDirExists;
-exports.readJSON = helperReadJson;
-
-function helperJoinDir(...args) {
-  return upath.normalize(upath.join(...args));
-}
-
-function helperDirExists(...args) {
-  return fse.pathExistsSync(helperJoinDir(...args));
-}
-
-function helperReadJson(...args) {
-  return fse.readJsonSync(helperJoinDir(...args));
-}
 
 /**
  * Returns scope of package eg. '@enterthenamehere' from package named 
@@ -27,7 +9,7 @@ function helperReadJson(...args) {
  *
  * @return {string} Scope of package.
  */
-function _getPackageScope(packageJSONFilePath) {
+ function _getPackageScope(packageJSONFilePath) {
   const filePath = upath.normalizeSafe(packageJSONFilePath);
 
   try {

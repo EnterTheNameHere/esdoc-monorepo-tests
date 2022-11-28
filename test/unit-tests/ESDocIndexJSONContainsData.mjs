@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { scope as gScope, dirExists, readJSON } from './helper.js';
+import { scope as gScope, dirExists, readJSON } from './helper.mjs';
 
 const esdocGeneratedFile = './test/fixture/out/index.json';
 
