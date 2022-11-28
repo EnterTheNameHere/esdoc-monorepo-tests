@@ -56,3 +56,6 @@ bin
 
 # Docs under test fixtures
 test/fixtures/**/docs
+
+# package-lock.json under test fixtures
+test/fixtures/**/package-lock.json
