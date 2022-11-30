@@ -19,14 +19,9 @@ module.exports = {
       "accessor": { "access": ["public", "protected"], "autoPrivate": true },
       "lint": {},
       "coverage": {},
-//      "undocumentIdentifier": { "enable": true },
-//      "unexportedIdentifier": { "enable": false },
-      "typeInference": {},
-//      "test": {
-//        "source": "./test",
-//        "includes": ["*.(spec|Spec|test|Test).js"],
-//        "excludes": ["*.config.js"]
-//      }
+      "undocumentIdentifier": { "enable": true }, // Should include undocumented identifiers to documentation
+      "unexportedIdentifier": { "enable": true }, // Should include identifiers which are not exported (eg. are local/file scope) into documentation too
+      "typeInference": {}
     }
   }]
 }
