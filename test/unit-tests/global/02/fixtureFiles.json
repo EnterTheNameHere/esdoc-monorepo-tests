@@ -1,4 +1,5 @@
 {
   "index.json": "../../../fixtures/02/docs/index.json",
-  "lint.json": "../../../fixtures/02/docs/lint.json"
+  "lint.json": "../../../fixtures/02/docs/lint.json",
+  "coverage.json": "../../../fixtures/02/docs/coverage.json"
 }

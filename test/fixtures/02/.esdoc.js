@@ -18,10 +18,10 @@ module.exports = {
     "option": {
       "accessor": { "access": ["public", "protected"], "autoPrivate": true },
       "lint": {},
-//      "coverage": { "enable": true },
+      "coverage": {},
 //      "undocumentIdentifier": { "enable": true },
 //      "unexportedIdentifier": { "enable": false },
-//      "typeInference": { "enable": true },
+      "typeInference": {},
 //      "test": {
 //        "source": "./test",
 //        "includes": ["*.(spec|Spec|test|Test).js"],
