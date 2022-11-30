@@ -17,7 +17,7 @@ module.exports = {
     "name": "esdoc-standard-plugin",
     "option": {
       "accessor": { "access": ["public", "protected"], "autoPrivate": true },
-//      "lint": { "enable": true },
+      "lint": {},
 //      "coverage": { "enable": true },
 //      "undocumentIdentifier": { "enable": true },
 //      "unexportedIdentifier": { "enable": false },

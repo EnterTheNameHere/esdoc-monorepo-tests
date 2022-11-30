@@ -46,7 +46,7 @@ before('"getting generated fixture documentation data"', function() {
 });
 
 describe('accessor plugin', function () {
-  it('ignores private identifiers', function () {
+  it('adds ignore property to all private identifiers, since access is only "public", "protected"', function () {
     const indexJSON = generatedDocumentationFiles['index.json'];
 
     const privateIdentifiers = collect(indexJSON)
@@ -56,10 +56,10 @@ describe('accessor plugin', function () {
       expect(identifier).to.have.property('ignore').and.to.equal(true);
     }
   });
-
-  it('privates all identifiers starting with underscore', function () {
+  
+  it('privates all identifiers starting with underscore, since autoprivate is true', function () {
     const indexJSON = generatedDocumentationFiles['index.json'];
-
+    
     let privateIdentifier = collect(indexJSON)
       .where('name', '===', '_staticMethodShouldBePrivate')
       .firstOrFail();
