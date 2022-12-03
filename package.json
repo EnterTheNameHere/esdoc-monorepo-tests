@@ -7,27 +7,23 @@
     "url": "https://github.com/EnterTheNameHere/esdoc-monorepo-tests"
   },
   "scripts": {
-    "prelocal-test1": "npm install",
-    "local-test1": "mocha ./test/unit-tests/01.test.mjs",
-    "prelocal-test2": "npm install",
-    "local-test2": "mocha ./test/unit-tests/02.test.mjs",
-    "prelocal-test3": "npm install",
-    "local-test3": "mocha ./test/unit-tests/03.test.mjs",
-    "preglobal-test-npm": "npm install",
-    "global-test-npm": "mocha ./test/unit-tests/ESDocIndexJSONContainsData.mjs",
-    "prepare-global-test1-npm": "npm install -g @enterthenamehere/esdoc@dev && npm list --depth=3 -g --json --long",
-    "postprepare-global-test1-npm": "npm install && npm list --json",
-    "preprepare-global-test2-npm": "npm remove -g @enterthenamehere/esdoc@dev && npm list -g --json",
-    "prepare-global-test2-npm": "npm install -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev && npm list --depth=3 -g --json --long",
-    "postprepare-global-test2-npm": "npm install && npm list --json",
-    "preprepare-global-test3-npm": "npm remove -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev && npm list --depth=3 -g --json --long",
-    "prepare-global-test3-npm": "npm install -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-accessor-plugin@dev @enterthenamehere/esdoc-brand-plugin@dev @enterthenamehere/esdoc-coverage-plugin@dev @enterthenamehere/esdoc-ecmascript-proposal-plugin@dev @enterthenamehere/esdoc-exclude-source-plugin@dev @enterthenamehere/esdoc-external-ecmascript-plugin@dev @enterthenamehere/esdoc-external-nodejs-plugin@dev @enterthenamehere/esdoc-external-webapi-plugin@dev @enterthenamehere/esdoc-flow-type-plugin@dev @enterthenamehere/esdoc-importpath-plugin@dev @enterthenamehere/esdoc-inject-gtm-plugin@dev @enterthenamehere/esdoc-inject-script-plugin@dev @enterthenamehere/esdoc-inject-style-plugin@dev @enterthenamehere/esdoc-integrate-manual-plugin@dev @enterthenamehere/esdoc-integrate-test-plugin@dev @enterthenamehere/esdoc-jsx-plugin@dev @enterthenamehere/esdoc-lint-plugin@dev @enterthenamehere/esdoc-publish-html-plugin@dev @enterthenamehere/esdoc-publish-markdown-plugin@dev @enterthenamehere/esdoc-react-plugin@dev @enterthenamehere/esdoc-type-inference-plugin@dev @enterthenamehere/esdoc-typescript-plugin@dev @enterthenamehere/esdoc-undocumented-identifier-plugin@dev @enterthenamehere/esdoc-unexported-identifier-plugin@dev @enterthenamehere/color-logger@dev @enterthenamehere/ice-cap@dev && npm list --depth=3 -g --json",
-    "postprepare-global-test3-npm": "npm install && npm list --json"
-  },
-  "devDependencies": {
-    "chai": "^4.3.6",
-    "fs-extra": "^10.1.0",
-    "mocha": "^10.1.0",
-    "upath": "^2.0.1"
+    "install-testing-suite-yarn": "yarn add --dev mocha chai fs-extra upath collect.js",
+    "install-testing-suite-npm": "npm install -d mocha chai fs-extra upath collect.js",
+    "install-testing-suite-pnpm": "pnpm add -D mocha chai fs-extra upath collect.js",
+    "global-list-packages-yarn": "yarn global list --depth=3 --json --long",
+    "global-list-packages-npm": "npm list -g --depth=3 --json --long",
+    "global-list-packages-pnpm": "pnpm list -g --depth=3 --json --long",
+    "global-test-1-install-packages-yarn": "yarn global add @enterthenamehere/esdoc@dev",
+    "global-test-1-install-packages-npm": "npm install -g @enterthenamehere/esdoc@dev",
+    "global-test-1-install-packages-pnpm": "pnpm add -g @enterthenamehere/esdoc@dev",
+    "global-test-1": "mocha ./test/unit-tests/common/01/",
+    "global-test-2-install-packages-yarn": "yarn global add @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "global-test-2-install-packages-npm": "npm install -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "global-test-2-install-packages-pnpm": "pnpm add -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "global-test-2": "mocha ./test/unit-tests/common/02/",
+    "global-test-3-install-packages-yarn": "yarn global add @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-accessor-plugin@dev @enterthenamehere/esdoc-brand-plugin@dev @enterthenamehere/esdoc-coverage-plugin@dev @enterthenamehere/esdoc-ecmascript-proposal-plugin@dev @enterthenamehere/esdoc-exclude-source-plugin@dev @enterthenamehere/esdoc-external-ecmascript-plugin@dev @enterthenamehere/esdoc-external-nodejs-plugin@dev @enterthenamehere/esdoc-external-webapi-plugin@dev @enterthenamehere/esdoc-flow-type-plugin@dev @enterthenamehere/esdoc-importpath-plugin@dev @enterthenamehere/esdoc-inject-gtm-plugin@dev @enterthenamehere/esdoc-inject-script-plugin@dev @enterthenamehere/esdoc-inject-style-plugin@dev @enterthenamehere/esdoc-integrate-manual-plugin@dev @enterthenamehere/esdoc-integrate-test-plugin@dev @enterthenamehere/esdoc-jsx-plugin@dev @enterthenamehere/esdoc-lint-plugin@dev @enterthenamehere/esdoc-publish-html-plugin@dev @enterthenamehere/esdoc-publish-markdown-plugin@dev @enterthenamehere/esdoc-react-plugin@dev @enterthenamehere/esdoc-type-inference-plugin@dev @enterthenamehere/esdoc-typescript-plugin@dev @enterthenamehere/esdoc-undocumented-identifier-plugin@dev @enterthenamehere/esdoc-unexported-identifier-plugin@dev @enterthenamehere/color-logger@dev @enterthenamehere/ice-cap@dev",
+    "global-test-3-install-packages-npm": "npm install -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-accessor-plugin@dev @enterthenamehere/esdoc-brand-plugin@dev @enterthenamehere/esdoc-coverage-plugin@dev @enterthenamehere/esdoc-ecmascript-proposal-plugin@dev @enterthenamehere/esdoc-exclude-source-plugin@dev @enterthenamehere/esdoc-external-ecmascript-plugin@dev @enterthenamehere/esdoc-external-nodejs-plugin@dev @enterthenamehere/esdoc-external-webapi-plugin@dev @enterthenamehere/esdoc-flow-type-plugin@dev @enterthenamehere/esdoc-importpath-plugin@dev @enterthenamehere/esdoc-inject-gtm-plugin@dev @enterthenamehere/esdoc-inject-script-plugin@dev @enterthenamehere/esdoc-inject-style-plugin@dev @enterthenamehere/esdoc-integrate-manual-plugin@dev @enterthenamehere/esdoc-integrate-test-plugin@dev @enterthenamehere/esdoc-jsx-plugin@dev @enterthenamehere/esdoc-lint-plugin@dev @enterthenamehere/esdoc-publish-html-plugin@dev @enterthenamehere/esdoc-publish-markdown-plugin@dev @enterthenamehere/esdoc-react-plugin@dev @enterthenamehere/esdoc-type-inference-plugin@dev @enterthenamehere/esdoc-typescript-plugin@dev @enterthenamehere/esdoc-undocumented-identifier-plugin@dev @enterthenamehere/esdoc-unexported-identifier-plugin@dev @enterthenamehere/color-logger@dev @enterthenamehere/ice-cap@dev",
+    "global-test-3-install-packages-pnpm": "pnpm add -g @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-accessor-plugin@dev @enterthenamehere/esdoc-brand-plugin@dev @enterthenamehere/esdoc-coverage-plugin@dev @enterthenamehere/esdoc-ecmascript-proposal-plugin@dev @enterthenamehere/esdoc-exclude-source-plugin@dev @enterthenamehere/esdoc-external-ecmascript-plugin@dev @enterthenamehere/esdoc-external-nodejs-plugin@dev @enterthenamehere/esdoc-external-webapi-plugin@dev @enterthenamehere/esdoc-flow-type-plugin@dev @enterthenamehere/esdoc-importpath-plugin@dev @enterthenamehere/esdoc-inject-gtm-plugin@dev @enterthenamehere/esdoc-inject-script-plugin@dev @enterthenamehere/esdoc-inject-style-plugin@dev @enterthenamehere/esdoc-integrate-manual-plugin@dev @enterthenamehere/esdoc-integrate-test-plugin@dev @enterthenamehere/esdoc-jsx-plugin@dev @enterthenamehere/esdoc-lint-plugin@dev @enterthenamehere/esdoc-publish-html-plugin@dev @enterthenamehere/esdoc-publish-markdown-plugin@dev @enterthenamehere/esdoc-react-plugin@dev @enterthenamehere/esdoc-type-inference-plugin@dev @enterthenamehere/esdoc-typescript-plugin@dev @enterthenamehere/esdoc-undocumented-identifier-plugin@dev @enterthenamehere/esdoc-unexported-identifier-plugin@dev @enterthenamehere/color-logger@dev @enterthenamehere/ice-cap@dev",
+    "global-test-3": "mocha ./test/unit-tests/common/03/"
   }
 }
