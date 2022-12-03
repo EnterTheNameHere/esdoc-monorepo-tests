@@ -55,21 +55,15 @@ jobs:
     - name: "Installing packages for test ${{github.event.inputs.testNumber}}"
       run: |
         ${{github.event.inputs.packageManager}} run global-test-${{github.event.inputs.testNumber}}-install-packages-${{github.event.inputs.packageManager}}
-    
-    - name: "Try finding dupes"
-      run: |
-        npm find-dupes -g
 
-    #- name: "Listing installed packages"
-    #  run: |
-    #    ${{github.event.inputs.packageManager}} run global-list-packages-${{github.event.inputs.packageManager}}
+    - name: "Listing installed packages"
+      run: |
+        ${{github.event.inputs.packageManager}} run global-list-packages-${{github.event.inputs.packageManager}}
 
     - name: "Run esdoc globally to generate documentation"
       working-directory: ./test/fixtures/${{github.event.inputs.testNumber}}/
       run: |
         esdoc
-        echo "printing out/index.json"
-        cat out/index.json
     
     - name: "Installing testing suite"
       run: |
