@@ -16,9 +16,5 @@
     "local-test-2-install-packages-pnpm": "pnpm add @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
     "local-test-2-generate-docs": "esdoc"
   },
-  "main": "./src/ESDocTest.js",
-  "devDependencies": {
-    "@enterthenamehere/esdoc": "^2.5.3-dev.2",
-    "@enterthenamehere/esdoc-standard-plugin": "^2.5.3-dev.1"
-  }
+  "main": "./src/ESDocTest.js"
 }
