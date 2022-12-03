@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@enterthenamehere/esdoc-installation-test-fixture",
+  "name": "@enterthenamehere/esdoc-installation-test-fixture-01",
   "description": "Contains minimal source code and settings to generate documentation with ESDoc.",
   "version": "1.0.0",
   "repository": {
