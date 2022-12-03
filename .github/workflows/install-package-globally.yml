@@ -23,12 +23,12 @@ on:
       testNumber:
         description: 'Which test to run:'
         required: true
-        default: '2'
+        default: '02'
         type: choice
         options:
-        - '1'
-        - '2'
-        - '3'
+        - '01'
+        - '02'
+        - '03'
       packageManager:
         description: 'Which package manager to use:'
         required: true
@@ -66,7 +66,7 @@ jobs:
     - name: "Installing testing suite"
       run: |
         ${{github.event.inputs.packageManager}} run install-testing-suite-${{github.event.inputs.packageManager}}
-
+    
     - name: "Run unit tests for fixture ${{github.event.inputs.testNumber}}"
       run: |
         ${{github.event.inputs.packageManager}} run global-test-${{github.event.inputs.testNumber}}
