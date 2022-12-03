@@ -52,6 +52,11 @@ jobs:
     - name: "Checkout repository with tests"
       uses: actions/checkout@v3
     
+    - name: "Installing pnpm"
+      if: ${{github.event.inputs.packageManager == 'pnpm'}}
+      run: |
+        npm install -g pnpm
+
     - name: "Installing packages for test ${{github.event.inputs.testNumber}}"
       run: |
         ${{github.event.inputs.packageManager}} run global-test-${{github.event.inputs.testNumber}}-install-packages-${{github.event.inputs.packageManager}}
