@@ -13,6 +13,7 @@
     "local-list-packages-pnpm": "pnpm list --depth=3 --json --long",
     "local-test-02-install-packages-yarn": "yarn add @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
     "local-test-02-install-packages-npm": "npm install @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
+    "prelocal-test-02-install-packages-pnpm": "npm install -g pnpm",
     "local-test-02-install-packages-pnpm": "pnpm add @enterthenamehere/esdoc@dev @enterthenamehere/esdoc-standard-plugin@dev",
     "local-test-02-generate-docs": "esdoc"
   },
