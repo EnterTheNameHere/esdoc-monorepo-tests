@@ -1,0 +1,28 @@
+{
+  "source": "./src",
+  "destination": "./docs",
+  "debug": false,
+  "verbose": false,
+  "includes": [
+    "*.js"
+  ],
+  "excludes": [
+    "*.config.js",
+    "*modules/"
+  ],
+  "index": "./README.md",
+  "package": "./package.json",
+  "plugins": [{
+    "accessor": { "access": ["public", "protected", "private"], "autoPrivate": true },
+    "lint": { "enable": true },
+    "coverage": { "enable": true },
+    "undocumentIdentifier": { "enable": true },
+    "unexportedIdentifier": { "enable": false },
+    "typeInference": { "enable": true },
+    "test": {
+      "source": "./test",
+      "includes": ["*.(spec|Spec|test|Test).js"],
+      "excludes": ["*.config.js"]
+    }
+  }]
+}
