@@ -11,10 +11,10 @@
     "local-list-packages-yarn": "yarn list --depth=3 --json --long",
     "local-list-packages-npm": "npm list --depth=3 --json --long",
     "local-list-packages-pnpm": "pnpm list --depth=3 --json --long",
-    "local-test-1-install-packages-yarn": "yarn add @enterthenamehere/esdoc@dev",
-    "local-test-1-install-packages-npm": "npm install @enterthenamehere/esdoc@dev",
-    "local-test-1-install-packages-pnpm": "pnpm add @enterthenamehere/esdoc@dev",
-    "local-test-1-generate-docs": "esdoc"
+    "local-test-01-install-packages-yarn": "yarn add @enterthenamehere/esdoc@dev",
+    "local-test-01-install-packages-npm": "npm install @enterthenamehere/esdoc@dev",
+    "local-test-01-install-packages-pnpm": "pnpm add @enterthenamehere/esdoc@dev",
+    "local-test-01-generate-docs": "esdoc"
   },
   "main": "./src/ESDocTest.js"
 }
