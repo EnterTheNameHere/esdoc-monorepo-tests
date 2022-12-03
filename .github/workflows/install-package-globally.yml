@@ -56,6 +56,10 @@ jobs:
       run: |
         ${{github.event.inputs.packageManager}} run global-test-${{github.event.inputs.testNumber}}-install-packages-${{github.event.inputs.packageManager}}
     
+    - name: "Listing installed packages"
+      run: |
+        ${{github.event.inputs.packageManager}} run global-list-packages-${{github.event.inputs.packageManager}}
+
     - name: "Run esdoc globally to generate documentation"
       working-directory: ./test/fixtures/${{github.event.inputs.testNumber}}/
       run: |
