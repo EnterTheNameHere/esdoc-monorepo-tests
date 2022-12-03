@@ -57,7 +57,7 @@ jobs:
         ${{github.event.inputs.packageManager}} run global-test-${{github.event.inputs.testNumber}}-install-packages-${{github.event.inputs.packageManager}}
     
     - name: "Run esdoc globally to generate documentation"
-      working-directory: ./test/fixture/${{github.event.inputs.testNumber}}/
+      working-directory: ./test/fixtures/${{github.event.inputs.testNumber}}/
       run: |
         esdoc
         echo "printing out/index.json"
