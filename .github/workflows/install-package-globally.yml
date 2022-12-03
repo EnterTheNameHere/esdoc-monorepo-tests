@@ -1,80 +1,72 @@
 name: Test global installation
 on:
   workflow_dispatch:
+    inputs:
+      runOn:
+        description: 'Run on:'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+        - 'ubuntu-latest'
+        - 'macos-latest'
+        - 'windows-latest'
+      nodeVersion:
+        description: 'Node.js version:'
+        required: true
+        default: '14'
+        type: choice
+        options:
+        - '14'
+        - '16'
+        - 'latest'
+      testNumber:
+        description: 'Which test to run:'
+        required: true
+        default: '2'
+        type: choice
+        options:
+        - '1'
+        - '2'
+        - '3'
+      packageManager:
+        description: 'Which package manager to use:'
+        required: true
+        default: 'npm'
+        type: choice
+        options:
+        - 'npm'
+        - 'yarn'
+        - 'pnpm'
+    
 
 jobs:
   test-installation:
-    strategy:
-      max-parallel: 2
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
-    
-    runs-on: ${{matrix.os}}
+    runs-on: ${{github.event.inputs.runOn}}
     steps:
-    - name: "Use 16 Node.js on ${{matrix.os}}"
+    - name: "Setting up Node.js ${{github.event.inputs.nodeVersion}} on ${{github.event.inputs.runOn}}"
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: ${{github.event.inputs.nodeVersion}}
 
     - name: "Checkout repository with tests"
       uses: actions/checkout@v3
     
-    - name: "Install @enterthenamehere/esdoc package group 1 globally"
+    - name: "Installing packages for test ${{github.event.inputs.testNumber}}"
       run: |
-        npm run prepare-global-test1-npm
+        ${{github.event.inputs.packageManager}} run global-test-${{github.event.inputs.testNumber}}-install-packages-${{github.event.inputs.packageManager}}
     
-    - name: "Run test with global esdoc"
-      working-directory: ./test/fixture
+    - name: "Run esdoc globally to generate documentation"
+      working-directory: ./test/fixture/${{github.event.inputs.testNumber}}/
       run: |
-        esdoc --debug --verbose
+        esdoc
         echo "printing out/index.json"
         cat out/index.json
     
-    - name: "Run unit-test"
+    - name: "Installing testing suite"
       run: |
-        npm run global-test-npm
-    
-    - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.3
-      with:
-        path: ./test/fixture/out
-    
+        ${{github.event.inputs.packageManager}} run install-testing-suite-${{github.event.inputs.packageManager}}
 
-
-    - name: "Install @enterthenamehere/esdoc package group 2 globally"
+    - name: "Run unit tests for fixture ${{github.event.inputs.testNumber}}"
       run: |
-        npm run prepare-global-test2-npm
-    
-    - name: "Run test with global esdoc"
-      working-directory: ./test/fixture
-      run: |
-        esdoc --debug --verbose
-        echo "printing out/index.json"
-        cat out/index.json
-    
-    - name: "Run unit-test"
-      run: |
-        npm run global-test-npm
-    
-    - name: Remove generated documentation
-      uses: JesseTG/rm@v1.0.3
-      with:
-        path: ./test/fixture/out
-    
-
-
-    - name: "Install @enterthenamehere/esdoc package group 3 globally"
-      run: |
-        npm run prepare-global-test1-npm
-    
-    - name: "Run test with global esdoc"
-      working-directory: ./test/fixture
-      run: |
-        esdoc --debug --verbose
-        echo "printing out/index.json"
-        cat out/index.json
-    
-    - name: "Run unit-test"
-      run: |
-        npm run global-test-npm
+        ${{github.event.inputs.packageManager}} run global-test-${{github.event.inputs.testNumber}}
